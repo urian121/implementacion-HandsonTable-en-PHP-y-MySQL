@@ -11,9 +11,7 @@
     <body>
         <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['filterData'])) {
-            require_once('../bd/configBD.php');
             $data = json_decode($_POST['filterData'], true);
-            print_r($data);
 
             date_default_timezone_set("America/Bogota");
             $fechaActual = date("d/m/Y");
@@ -43,16 +41,13 @@
             echo "</thead>";
             echo "<tbody>";
 
-            foreach ($data[0] as $rowFila) {
-                echo "<tr>
-                <td>" . $rowFila['nombre'] . "</td>
-                <td>" . $rowFila['edad'] . "</td>
-                <td>" . $rowFila['cedula'] . "</td>
-                <td>" . $rowFila['sexo'] . "</td>
-                <td>" . $rowFila['telefono'] . "</td>
-                <td>" . $rowFila['cargo'] . "</td>
-                <td>" . $rowFila['created_at'] . "</td>  
-            </tr>";
+            // Recorrer el arreglo de datos y mostrarlos en la tabla
+            foreach ($data as $row) {
+                echo '<tr>';
+                foreach ($row as $cell) {
+                    echo '<td>' . htmlspecialchars($cell) . '</td>';
+                }
+                echo '</tr>';
             }
             echo "</tbody>";
             echo "</table>";

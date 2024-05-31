@@ -4,12 +4,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Como usar la libreria HandsonTable en PHP y MySQL</title>
+    <title>Como usar la librería HandsonTable en PHP y MySQL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Agregando css de libreria HandsonTable -->
+    <!-- Agregando css de librería HandsonTable -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+    <style>
+        body {
+            background-color: #f2f2f2 !important;
+        }
+
+        .container {
+            background-color: #fff !important;
+            padding: 20px;
+            border-radius: 0px 0px 10px 10px;
+            height: 100vh;
+        }
+
+        #section_handsontable {
+            margin: 0 auto;
+            background-color: #f9f7f7;
+            height: 250px;
+            overflow-y: scroll;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,24 +46,29 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-12">
                 <h1 class="text-center fw-bold">
-                    Como usar la libreria HandsonTable en PHP y MySQL
+                    Como usar la librería HandsonTable en PHP y MySQL
                     <hr>
                 </h1>
-                <a href="javascript:void(0);" class="custom_btn btn btn-success float-right" title="Descargar" onclick="exportData()">
+                <a href="javascript:void(0);" class="custom_btn btn btn-success float-right" title="Descargar data de la tabla" onclick="exportDataFiltro()">
+                    <i class="bi bi-file-earmark-bar-graph"></i>
+                </a>
+                <a href="javascript:void(0);" class="custom_btn btn btn-success float-right" title="Descargar toda la data" onclick="getAllData()">
                     <i class="bi bi-file-earmark-bar-graph"></i>
                 </a>
             </div>
         </div>
 
         <div class="row justify-content-center mt-5">
-            <div class="col-md-12">
-                <div id="content_handsontable"></div>
+            <div class="col-md-12 text-center">
+                <section id="section_handsontablex">
+                    <div id="content_handsontable"></div>
+                </section>
             </div>
         </div>
     </div>
 
 
-    <!-- Agregando JS de libreria HandsonTable -->
+    <!-- Agregando JS de librería HandsonTable -->
     <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
     <script>
         const dataBD = <?php echo $getDataEmpleados; ?>;
@@ -116,7 +140,7 @@
 
 
         // Acciones adicionales
-        function exportData() {
+        function exportDataFiltro() {
             // Obtener los datos de Handsontable
             const data = hot.getData();
             const jsonData = JSON.stringify(data);
@@ -137,7 +161,7 @@
         }
 
         // Acciones adicionales
-        function getData1() {
+        function getAllData() {
             // Crear un formulario y enviar los datos al servidor
             const form = document.createElement('form');
             form.method = 'POST';
