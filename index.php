@@ -35,10 +35,11 @@
     <?php
     require_once('consultas.php');
     $getDataEmpleados = getEmpleados($conexion);
-
+    /*
     echo '<code>';
     print_r($getDataEmpleados);
     echo '</code>';
+    */
 
     ?>
     <div class="container">
