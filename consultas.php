@@ -1,5 +1,5 @@
 <?php
-
+require_once('bd/configBD.php');
 // Lista de empleados para pintar en el Handsontable, retornando un array de objetos que representa las filas de la tabla
 function getEmpleados($conexion)
 {
@@ -18,7 +18,6 @@ function getEmpleados($conexion)
 
 
 // Lista de empleados para el reporte
-
 function getEmpleadosReporte($conexion)
 {
     $sql = "SELECT * FROM tbl_empleados ORDER BY created_at DESC;";

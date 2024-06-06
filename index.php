@@ -33,14 +33,13 @@
 
 <body>
     <?php
-    require_once('bd/configBD.php');
     require_once('consultas.php');
     $getDataEmpleados = getEmpleados($conexion);
-    /*
-    echo '<pre>';
+
+    echo '<code>';
     print_r($getDataEmpleados);
-    echo '</pre>';
-    */
+    echo '</code>';
+
     ?>
     <div class="container">
         <div class="row justify-content-center mt-5">
